@@ -46,7 +46,7 @@ class RoboExtrator():
                 tentativas -= 1
 
     def faz_requisicao(self):
-        time.sleep(2)
+        time.sleep(1)
         tentativas = 5
         conseguiu = False
 
