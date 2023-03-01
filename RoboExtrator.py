@@ -14,13 +14,8 @@ class RoboExtrator():
 
     def extrai_lista_cpf(self,cpf_list):
         self.browser = open_selenium(
-            path_selenium='./chromedriver' if 'linux' in sys.platform else './chromedriver.exe', headless=False
+            path_selenium='./chromedriver' if 'linux' in sys.platform else './chromedriver.exe', headless=True
         )
-
-        if not self.browser:
-            self.browser = open_selenium(
-                path_selenium='../chromedriver' if 'linux' in sys.platform else '../chromedriver.exe', headless=True
-            )
 
         tentativas = 5
         conseguiu = False
@@ -32,32 +27,26 @@ class RoboExtrator():
 
 
                 s = requests.session()
-                if self.browser.requests[74].url == "http://extratoblubeapp-env.eba-mvegshhd.sa-east-1.elasticbeanstalk.com/usuario/logado":
-                    request = self.browser.requests[74]
-                elif self.browser.requests[78].url == "http://extratoblubeapp-env.eba-mvegshhd.sa-east-1.elasticbeanstalk.com/usuario/logado":
-                    request = self.browser.requests[78]
-                self.headers = request.headers
+                request = [request for request in self.browser.requests if request.url == "http://extratoblubeapp-env.eba-mvegshhd.sa-east-1.elasticbeanstalk.com/usuario/logado"]
+                self.headers = request[0].headers
                 for cpf in cpf_list:
                     resultado_beneficio_cpf = s.get(f"http://extratoblubeapp-env.eba-mvegshhd.sa-east-1.elasticbeanstalk.com/offline/listagem/{cpf}",headers=self.headers)
                     numero_beneficio = re.search('(\"nb\":)(\"\d+\")',str(resultado_beneficio_cpf.content)).group(2).replace("\"","")
                 print(resultado_beneficio_cpf.content)
+                conseguiu = True
             except Exception as e:
                 print(e)
                 tentativas -= 1
 
     def faz_requisicao(self):
         time.sleep(1)
-        tentativas = 5
-        conseguiu = False
 
-        while tentativas >= 0 and not conseguiu:
-            try:
-                self.browser.get(self.url_pagina_login)
-                conseguiu = True
+        try:
+             self.browser.get(self.url_pagina_login)
 
-            except Exception as e:
-                print(e)
-                tentativas -= 1
+
+        except Exception as e:
+            print(e)
 
     def insere_login_senha(self, usuario, senha):
         time.sleep(1)
