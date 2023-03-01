@@ -1,5 +1,4 @@
 import requests, re
-import time
 import sys
 from SeleniumUtil import *
 
@@ -11,21 +10,6 @@ class RoboExtrator():
         self.urlconsulta = 'http://extratoblubeapp-env.eba-mvegshhd.sa-east-1.elasticbeanstalk.com/offline/listagem/074.687.335-20'
         self.url_pagina_login ="http://ionic-application.s3-website-sa-east-1.amazonaws.com/"
         self.headers = None
-        # self.headers = {
-        #     "User-Agent":
-        #         "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36"
-        # }
-        # self.headers = {"Host": "extratoblubeapp-env.eba-mvegshhd.sa-east-1.elasticbeanstalk.com",
-        #            "User-Agent": "Mozilla/5.0 (iPad; CPU OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
-        #            "Accept": 'application/json,text/plain, */* ',
-        #            "Accept-Language": "pt-BR,pt;q=0.8,en-US;q = 0.5,en;q=0.3",
-        #            "Accept-Encoding": "utf-8",
-        #            "Content-Type": "application/json",
-        #            "Content-Length": "43",
-        #            "Origin": "http://ionic-application.s3-website-sa-east-1.amazonaws.com",
-        #            "Connection": "keep-alive",
-        #            "Referer": "http://ionic-application.s3-website-sa-east-1.amazonaws.com/"
-        #            }
 
 
     def extrai_lista_cpf(self,cpf_list):
@@ -35,23 +19,34 @@ class RoboExtrator():
 
         if not self.browser:
             self.browser = open_selenium(
-                path_selenium='../chromedriver' if 'linux' in sys.platform else '../chromedriver.exe', headless=False
+                path_selenium='../chromedriver' if 'linux' in sys.platform else '../chromedriver.exe', headless=True
             )
 
-        self.faz_requisicao()
-        self.insere_login_senha(self.login,self.senha)
+        tentativas = 5
+        conseguiu = False
+
+        while tentativas >= 0 and not conseguiu:
+            try:
+                self.faz_requisicao()
+                self.insere_login_senha(self.login,self.senha)
 
 
-        s = requests.session()
-        request = self.browser.requests[77]
-        self.headers = request.headers
-        for cpf in cpf_list:
-            resultado_beneficio_cpf = s.get(f"http://extratoblubeapp-env.eba-mvegshhd.sa-east-1.elasticbeanstalk.com/offline/listagem/{cpf}",headers=self.headers)
-        print(resultado_beneficio_cpf.content)
-
+                s = requests.session()
+                if self.browser.requests[74].url == "http://extratoblubeapp-env.eba-mvegshhd.sa-east-1.elasticbeanstalk.com/usuario/logado":
+                    request = self.browser.requests[74]
+                elif self.browser.requests[78].url == "http://extratoblubeapp-env.eba-mvegshhd.sa-east-1.elasticbeanstalk.com/usuario/logado":
+                    request = self.browser.requests[78]
+                self.headers = request.headers
+                for cpf in cpf_list:
+                    resultado_beneficio_cpf = s.get(f"http://extratoblubeapp-env.eba-mvegshhd.sa-east-1.elasticbeanstalk.com/offline/listagem/{cpf}",headers=self.headers)
+                    numero_beneficio = re.search('(\"nb\":)(\"\d+\")',str(resultado_beneficio_cpf.content)).group(2).replace("\"","")
+                print(resultado_beneficio_cpf.content)
+            except Exception as e:
+                print(e)
+                tentativas -= 1
 
     def faz_requisicao(self):
-
+        time.sleep(2)
         tentativas = 5
         conseguiu = False
 
@@ -65,7 +60,7 @@ class RoboExtrator():
                 tentativas -= 1
 
     def insere_login_senha(self, usuario, senha):
-        time.sleep(2)
+        time.sleep(1)
         send_keys_by_name(self.browser, 'usuario', usuario)
         send_keys_by_name(self.browser, 'senha', senha)
         find_element_by_xpath_with_click(self.browser, '//*[@id="botao"]')
