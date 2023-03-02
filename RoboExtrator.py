@@ -69,20 +69,3 @@ class RoboExtrator:
             self.logger.exception(e)
             raise
         return numero_beneficio
-
-
-if __name__ == "__main__":
-    cpf_list = [
-        "074.687.335-20",
-        "216.123.905-87",
-        "183.235.105-04",
-        "112.199.985-91",
-        "478.130.405-20",
-        "259.936.315-20",
-        "044.284.555-34",
-        "126.115.815-68",
-        "095.310.845-72",
-        "162.964.945-72",
-    ]
-    robo = RoboExtrator()
-    resultado = robo.extrai_lista_cpf(cpf_list,"testekonsi","testekonsi")
