@@ -35,7 +35,7 @@ class RoboExtrator():
                 numero_beneficio = re.search('(\"nb\":)(\"\d+\")',str(resultado_beneficio_cpf.content)).group(2).replace("\"","")
                 print(numero_beneficio)
         except Exception as e:
-            self.logger.exception()
+            self.logger.exception(e)
             raise
 
 
@@ -44,7 +44,7 @@ class RoboExtrator():
         try:
              self.browser.get(self.url_pagina_login)
         except Exception as e:
-            self.logger.exception()
+            self.logger.exception(e)
             raise
 
     def insere_login_senha(self, usuario, senha):
