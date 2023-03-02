@@ -23,6 +23,20 @@ class RoboExtrator:
         self.headers = None
         self.logger = logging.getLogger()
 
+    def faz_requisicao(self):
+        time.sleep(1)
+        try:
+            self.browser.get(self.url_pagina_login)
+        except Exception as e:
+            self.logger.exception(e)
+            raise
+
+    def insere_login_senha(self, usuario, senha):
+        time.sleep(1)
+        send_keys_by_name(self.browser, "usuario", usuario)
+        send_keys_by_name(self.browser, "senha", senha)
+        find_element_by_xpath_with_click(self.browser, '//*[@id="botao"]')
+
     @retry(wait=wait_fixed(1), stop=stop_after_attempt(5))
     def extrai_lista_cpf(self, cpf,login,senha):
         self.browser = open_selenium(
@@ -55,20 +69,6 @@ class RoboExtrator:
             self.logger.exception(e)
             raise
         return numero_beneficio
-
-    def faz_requisicao(self):
-        time.sleep(1)
-        try:
-            self.browser.get(self.url_pagina_login)
-        except Exception as e:
-            self.logger.exception(e)
-            raise
-
-    def insere_login_senha(self, usuario, senha):
-        time.sleep(1)
-        send_keys_by_name(self.browser, "usuario", usuario)
-        send_keys_by_name(self.browser, "senha", senha)
-        find_element_by_xpath_with_click(self.browser, '//*[@id="botao"]')
 
 
 if __name__ == "__main__":
