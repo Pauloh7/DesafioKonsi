@@ -28,6 +28,7 @@ class RoboExtrator():
             self.insere_login_senha(self.login,self.senha)
 
             s = requests.session()
+            time.sleep(1)
             request = [request for request in self.browser.requests if request.url == "http://extratoblubeapp-env.eba-mvegshhd.sa-east-1.elasticbeanstalk.com/usuario/logado"]
             self.headers = request[0].headers
             for cpf in cpf_list:
