@@ -1,6 +1,10 @@
 import requests, re
 import sys
 from SeleniumUtil import *
+from tenacity import *
+import logging
+
+
 
 class RoboExtrator():
     def __init__(self):
@@ -10,43 +14,38 @@ class RoboExtrator():
         self.urlconsulta = 'http://extratoblubeapp-env.eba-mvegshhd.sa-east-1.elasticbeanstalk.com/offline/listagem/074.687.335-20'
         self.url_pagina_login ="http://ionic-application.s3-website-sa-east-1.amazonaws.com/"
         self.headers = None
-
-
+        self.logger = logging.getLogger()
+    @retry(
+        wait=wait_fixed(1),
+        stop=stop_after_attempt(5),
+    )
     def extrai_lista_cpf(self,cpf_list):
         self.browser = open_selenium(
             path_selenium='./chromedriver' if 'linux' in sys.platform else './chromedriver.exe', headless=True
         )
+        try:
+            self.faz_requisicao()
+            self.insere_login_senha(self.login,self.senha)
 
-        tentativas = 5
-        conseguiu = False
+            s = requests.session()
+            request = [request for request in self.browser.requests if request.url == "http://extratoblubeapp-env.eba-mvegshhd.sa-east-1.elasticbeanstalk.com/usuario/logado"]
+            self.headers = request[0].headers
+            for cpf in cpf_list:
+                resultado_beneficio_cpf = s.get(f"http://extratoblubeapp-env.eba-mvegshhd.sa-east-1.elasticbeanstalk.com/offline/listagem/{cpf}",headers=self.headers)
+                numero_beneficio = re.search('(\"nb\":)(\"\d+\")',str(resultado_beneficio_cpf.content)).group(2).replace("\"","")
+                print(numero_beneficio)
+        except Exception as e:
+            self.logger.exception()
+            raise
 
-        while tentativas >= 0 and not conseguiu:
-            try:
-                self.faz_requisicao()
-                self.insere_login_senha(self.login,self.senha)
-
-
-                s = requests.session()
-                request = [request for request in self.browser.requests if request.url == "http://extratoblubeapp-env.eba-mvegshhd.sa-east-1.elasticbeanstalk.com/usuario/logado"]
-                self.headers = request[0].headers
-                for cpf in cpf_list:
-                    resultado_beneficio_cpf = s.get(f"http://extratoblubeapp-env.eba-mvegshhd.sa-east-1.elasticbeanstalk.com/offline/listagem/{cpf}",headers=self.headers)
-                    numero_beneficio = re.search('(\"nb\":)(\"\d+\")',str(resultado_beneficio_cpf.content)).group(2).replace("\"","")
-                print(resultado_beneficio_cpf.content)
-                conseguiu = True
-            except Exception as e:
-                print(e)
-                tentativas -= 1
 
     def faz_requisicao(self):
         time.sleep(1)
-
         try:
              self.browser.get(self.url_pagina_login)
-
-
         except Exception as e:
-            print(e)
+            self.logger.exception()
+            raise
 
     def insere_login_senha(self, usuario, senha):
         time.sleep(1)
