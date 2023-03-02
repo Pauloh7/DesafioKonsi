@@ -1,3 +1,5 @@
+import time
+
 from seleniumwire import webdriver
 from selenium.webdriver.common.by import By
 import logging
@@ -28,7 +30,7 @@ def open_selenium(
         browser = webdriver.Chrome(
             chrome_options=chrome_options, executable_path=path_selenium
         )  # path sempre contendo o .exe no windows
-        # time.sleep (1)
+        time.sleep (1)
 
         if not headless and minimize_window:
             browser.minimize_window()
@@ -43,9 +45,9 @@ def open_selenium(
 
 def find_element_by_xpath_with_click(browser, element_xpath):
     browser.find_element(By.XPATH, element_xpath).click()
-    # time.sleep(1)
+    time.sleep(1)
 
 
 def send_keys_by_name(browser, element_xpath, value):
     browser.find_element(By.NAME, element_xpath).send_keys(value)
-    # time.sleep(1)
+    time.sleep(1)
