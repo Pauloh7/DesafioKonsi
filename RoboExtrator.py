@@ -24,7 +24,7 @@ class RoboExtrator:
         self.logger = logging.getLogger()
 
     @retry(wait=wait_fixed(1), stop=stop_after_attempt(5))
-    def extrai_lista_cpf(self, cpf_list,login,senha):
+    def extrai_lista_cpf(self, cpf,login,senha):
         self.browser = open_selenium(
             path_selenium="./chromedriver"
             if "linux" in sys.platform
@@ -43,19 +43,18 @@ class RoboExtrator:
                 if request.url == f"{self.urlconsulta}/usuario/logado"
             ]
             self.headers = request[0].headers
-            for cpf in cpf_list:
-                resultado_beneficio_cpf = s.get(
-                    f"{self.urlconsulta}/offline/listagem/{cpf}", headers=self.headers
-                )
-                numero_beneficio = (
-                    re.search('("nb":)("\d+")', str(resultado_beneficio_cpf.content))
-                    .group(2)
-                    .replace('"', "")
-                )
-                print(numero_beneficio)
+            resultado_beneficio_cpf = s.get(
+                f"{self.urlconsulta}/offline/listagem/{cpf}", headers=self.headers
+            )
+            numero_beneficio = (
+                re.search('("nb":)("\d+")', str(resultado_beneficio_cpf.content))
+                .group(2)
+                .replace('"', "")
+            )
         except Exception as e:
             self.logger.exception(e)
             raise
+        return numero_beneficio
 
     def faz_requisicao(self):
         time.sleep(1)

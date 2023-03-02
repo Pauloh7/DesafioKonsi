@@ -6,6 +6,6 @@ app = FastAPI()
 @app.post("/requisicao/")
 async def create_item(cliente: schema.Cliente):
     robo = RoboExtrator()
-    numero_beneficio = robo.extrai_lista_cpf(cliente.cpf,cliente.senha,cliente.login)
+    numero_beneficio = robo.extrai_lista_cpf(cliente.cpf,cliente.login,cliente.senha)
     resultado_dict = {"numero_do_beneficio":numero_beneficio}
     return resultado_dict
