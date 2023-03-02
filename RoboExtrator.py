@@ -1,6 +1,6 @@
 import time
-import requests
 import re
+import requests
 import sys
 from SeleniumUtil import (
     open_selenium,
@@ -14,8 +14,6 @@ import logging
 class RoboExtrator:
     def __init__(self):
         self.browser = None
-        self.login = "testekonsi"
-        self.senha = "testekonsi"
         self.urlconsulta = (
             "http://extratoblubeapp-env.eba-mvegshhd.sa-east-1.elasticbeanstalk.com"
         )
@@ -26,7 +24,7 @@ class RoboExtrator:
         self.logger = logging.getLogger()
 
     @retry(wait=wait_fixed(1), stop=stop_after_attempt(5))
-    def extrai_lista_cpf(self, cpf_list):
+    def extrai_lista_cpf(self, cpf_list,login,senha):
         self.browser = open_selenium(
             path_selenium="./chromedriver"
             if "linux" in sys.platform
@@ -35,7 +33,7 @@ class RoboExtrator:
         )
         try:
             self.faz_requisicao()
-            self.insere_login_senha(self.login, self.senha)
+            self.insere_login_senha(login, senha)
 
             s = requests.session()
             time.sleep(1)
@@ -88,4 +86,4 @@ if __name__ == "__main__":
         "162.964.945-72",
     ]
     robo = RoboExtrator()
-    resultado = robo.extrai_lista_cpf(cpf_list)
+    resultado = robo.extrai_lista_cpf(cpf_list,"testekonsi","testekonsi")
