@@ -1,8 +1,8 @@
 from fastapi.testclient import TestClient
-from Router import app
+from api.Router import app
 class TestRoboExtrator:
 
-    def test_requisita_beneficio(self):
+    def test_consulta_cpf(self):
         cliente = TestClient(app)
         numero_beneficio = cliente.post(
             "/consultacpf/",
