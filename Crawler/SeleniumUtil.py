@@ -26,7 +26,7 @@ def open_selenium(
 
         browser = webdriver.Chrome(
             chrome_options=chrome_options, executable_path=path_selenium
-        )  # path sempre contendo o .exe no windows
+        )
         time.sleep (1)
 
 

@@ -39,7 +39,7 @@ class RoboExtrator:
         find_element_by_xpath_with_click(self.browser, '//*[@id="botao"]')
 
     @retry(wait=wait_fixed(1), stop=stop_after_attempt(5))
-    def extrai_lista_cpf(self, cpf,login,senha):
+    def extrai_beneficio(self, cpf, login, senha):
         self.browser = open_selenium(
             path_selenium="./chromedriver"
             if "linux" in sys.platform
@@ -62,7 +62,7 @@ class RoboExtrator:
                 f"{self.urlconsulta}/offline/listagem/{cpf}", headers=self.headers
             )
             numero_beneficio = (
-                re.search('("nb":)("\d+")', str(resultado_beneficio_cpf.content))
+                re.search(r'("nb":)("\d+")', str(resultado_beneficio_cpf.content))
                 .group(2)
                 .replace('"', "")
             )
