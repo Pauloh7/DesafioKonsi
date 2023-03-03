@@ -8,9 +8,6 @@ import logging
 def open_selenium(
     path_selenium,
     headless=False,
-    options=None,
-    minimize_window=False,
-    path_download_file=None,
 ):
     browser = None
 
@@ -32,8 +29,6 @@ def open_selenium(
         )  # path sempre contendo o .exe no windows
         time.sleep (1)
 
-        if not headless and minimize_window:
-            browser.minimize_window()
 
     except Exception as e:
         logger = logging.getLogger()

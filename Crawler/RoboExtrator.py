@@ -2,7 +2,7 @@ import time
 import re
 import requests
 import sys
-from SeleniumUtil import (
+from Crawler.SeleniumUtil import (
     open_selenium,
     find_element_by_xpath_with_click,
     send_keys_by_name,
@@ -10,6 +10,7 @@ from SeleniumUtil import (
 from tenacity import retry, wait_fixed, stop_after_attempt
 import logging
 
+logger = logging.getLogger()
 
 class RoboExtrator:
     def __init__(self):
@@ -21,14 +22,14 @@ class RoboExtrator:
             "http://ionic-application.s3-website-sa-east-1.amazonaws.com/"
         )
         self.headers = None
-        self.logger = logging.getLogger()
+
 
     def faz_requisicao(self):
         time.sleep(1)
         try:
             self.browser.get(self.url_pagina_login)
         except Exception as e:
-            self.logger.exception(e)
+            logger.exception(e)
             raise
 
     def insere_login_senha(self, usuario, senha):
@@ -66,6 +67,6 @@ class RoboExtrator:
                 .replace('"', "")
             )
         except Exception as e:
-            self.logger.exception(e)
+            logger.exception(e)
             raise
         return numero_beneficio
