@@ -25,9 +25,9 @@ class RoboExtrator:
 
 
     def faz_requisicao(self):
+        """Executa primeira requisicao ao site utilizando webdriver selenium
         """
-        Executa primeira requisicao ao site utilizando webdriver selenium
-        """
+
         time.sleep(1)
         try:
             self.browser.get(self.url_pagina_login)
@@ -36,13 +36,13 @@ class RoboExtrator:
             raise
 
     def insere_login_senha(self, login, senha):
-        """
-        Busca inputs de usuario e senha, os preenche
-        e clica no botão para requisitar acesso
-        param:
-            login(str): nome de login do requisitante
+        """Busca inputs de usuario e senha, os preenche e clica no botão para requisitar acesso
+
+        Args:
+            login (str): nome de login do requisitante
             senha(str): senha do requisitante
         """
+
         time.sleep(1)
         envia_chaves_por_nome(self.browser, "usuario", login)
         envia_chaves_por_nome(self.browser, "senha", senha)
@@ -50,15 +50,17 @@ class RoboExtrator:
 
     @retry(wait=wait_fixed(1), stop=stop_after_attempt(5))
     def extrai_beneficio(self, cpf, login, senha):
+        """Executa extração do numero de beneficio
+
+        Args:
+            cpf (str): cpf a ter beneficio extraido
+            login (str): nome de login do requisitante
+            senha (str): senha do requisitante
+
+        Returns:
+            numero_beneficio (str): numero do beneficio extraido
         """
-        Executa extração do numero de beneficio
-        param:
-            cpf(str): cpf a ter beneficio extraido
-            login(str): nome de login do requisitante
-            senha(str): senha do requisitante
-        return:
-            numero_beneficio(str): numero do beneficio extraido
-        """
+
         self.browser = abre_selenium(
             path_selenium="./chromedriver"
             if "linux" in sys.platform

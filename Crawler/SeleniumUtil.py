@@ -9,14 +9,16 @@ def abre_selenium(
     path_selenium,
     headless=False,
 ):
-    """
-    Executa o selenium e abre uma instancia de navegador
-    param:
-        path_selenium(str): caminho do chromedriver
-        headless(bolean): determina se o selenium abre ou nao uma janela quando executado
+    """Executa o selenium e abre uma instancia de navegador
+
+    Args:
+        path_selenium (str): caminho do chromedriver
+        headless (bolean): determina se o selenium abre ou nao uma janela quando executado
+
     return:
-        browser(seleniumwire.webdriver.Chrome): objeto seleniumwire (janela do navegador)
+        browser (seleniumwire.webdriver.Chrome): objeto seleniumwire (janela do navegador)
     """
+
     browser = None
 
     try:
@@ -46,19 +48,20 @@ def abre_selenium(
 
 
 def encontra_elemento_por_xpath_com_click(browser, element_xpath):
+    """Simula clique do mouse em elemento da pagina com selenium
+
+    Args:
+        browser (seleniumwire.webdriver.Chrome): objeto seleniumwire (janela do navegador)
+        element_xpath (str): xpath do elemento que se deseja o clique
     """
-    Simula clique do mouse em elemento da pagina com selenium
-    param:
-        browser(seleniumwire.webdriver.Chrome): objeto seleniumwire (janela do navegador)
-        element_xpath: xpath do elemento que se deseja o clique
-    """
+
     browser.find_element(By.XPATH, element_xpath).click()
     time.sleep(1)
 
 
 def envia_chaves_por_nome(browser, element_name, value):
+    """Encontra elemento, envia e preenche com valor
     """
-    Encontra elemento, envia e preenche com valor
-    """
+
     browser.find_element(By.NAME, element_name).send_keys(value)
     time.sleep(1)

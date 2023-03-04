@@ -5,9 +5,9 @@ from Crawler.SeleniumUtil import abre_selenium
 
 class TestSeleniumUtil:
     def test_abre_selenium(self):
+        """Testa modulo que abre uma instancia de selenium
         """
-        Testa modulo que abre uma instancia de selenium
-        """
+
         browser_teste = abre_selenium(path_selenium="./chromedriver"
             if "linux" in sys.platform
             else "./chromedriver.exe",
