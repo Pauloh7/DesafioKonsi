@@ -8,10 +8,13 @@ async def consulta_cpf(cliente: schema.ClienteInput) -> dict:
     """Parte da api que recebe o post com dados do cliente e executa chamada para extracao dos beneficios
 
     Args:
-        cliente (schema.ClienteInput): json com dados do cliente
+        cliente (schema.ClienteInput): Json com dados do cliente
 
     Returns:
-        resultado_dict (dict): dicionario com numero do beneficio
+        resultado_dict (dict): Dicionario com numero do beneficio
+
+    Raises:
+        HTTPException: Erro de processamento na requisição
     """
 
     try:

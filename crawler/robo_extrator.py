@@ -39,8 +39,8 @@ class RoboExtrator:
         """Busca inputs de usuario e senha, os preenche e clica no botão para requisitar acesso
 
         Args:
-            login (str): nome de login do requisitante
-            senha(str): senha do requisitante
+            login (str): Usuário do requisitante
+            senha(str): Senha do requisitante
         """
 
         time.sleep(1)
@@ -49,16 +49,19 @@ class RoboExtrator:
         encontra_elemento_por_xpath_com_click(self.browser, '//*[@id="botao"]')
 
     @retry(wait=wait_fixed(1), stop=stop_after_attempt(5))
-    def extrai_beneficio(self, cpf: str, login: str, senha: str) ->str:
+    def extrai_beneficio(self, cpf: str, login: str, senha: str) -> str:
         """Executa extração do numero de beneficio
 
         Args:
-            cpf (str): cpf a ter beneficio extraido
-            login (str): nome de login do requisitante
-            senha (str): senha do requisitante
+            cpf (str): Cpf a ter beneficio extraido
+            login (str): Usuário do requisitante
+            senha (str): Senha do requisitante
 
         Returns:
-            numero_beneficio (str): numero do beneficio extraido
+            numero_beneficio (str): Número do beneficio extraido
+
+        Raises:
+        AttributeError: Erro causado por não haver benefício a ser extraido
         """
 
         numero_beneficio = None
