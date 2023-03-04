@@ -58,11 +58,7 @@ def encontra_elemento_por_xpath_com_click(browser, element_xpath):
 
 def envia_chaves_por_nome(browser, element_name, value):
     """
-    encontra
-    param:
-        browser:
-        element_name:
-        value:
+    Encontra elemento e preenche com valor
     """
     browser.find_element(By.NAME, element_name).send_keys(value)
     time.sleep(1)
