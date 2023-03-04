@@ -3,9 +3,9 @@ import re
 import requests
 import sys
 from Crawler.SeleniumUtil import (
-    open_selenium,
-    find_element_by_xpath_with_click,
-    send_keys_by_name,
+    abre_selenium,
+    encontra_elemento_por_xpath_com_click,
+    envia_chaves_por_nome,
 )
 from tenacity import retry, wait_fixed, stop_after_attempt
 import logging
@@ -25,6 +25,9 @@ class RoboExtrator:
 
 
     def faz_requisicao(self):
+        """
+        Executa primeira requisicao ao site utilizando webdriver selenium
+        """
         time.sleep(1)
         try:
             self.browser.get(self.url_pagina_login)
@@ -32,15 +35,31 @@ class RoboExtrator:
             logger.exception(e)
             raise
 
-    def insere_login_senha(self, usuario, senha):
+    def insere_login_senha(self, login, senha):
+        """
+        Busca inputs de usuario e senha, os preenche
+        e clica no botão para requisitar acesso
+        param:
+            login(str): nome de login do requisitante
+            senha(str): senha do requisitante
+        """
         time.sleep(1)
-        send_keys_by_name(self.browser, "usuario", usuario)
-        send_keys_by_name(self.browser, "senha", senha)
-        find_element_by_xpath_with_click(self.browser, '//*[@id="botao"]')
+        envia_chaves_por_nome(self.browser, "usuario", login)
+        envia_chaves_por_nome(self.browser, "senha", senha)
+        encontra_elemento_por_xpath_com_click(self.browser, '//*[@id="botao"]')
 
     @retry(wait=wait_fixed(1), stop=stop_after_attempt(5))
     def extrai_beneficio(self, cpf, login, senha):
-        self.browser = open_selenium(
+        """
+        Executa extração do numero de beneficio
+        :param
+            cpf(str): cpf a ter beneficio extraido
+            login(str): nome de login do requisitante
+            senha(str): senha do requisitante
+        :return
+            numero_beneficio(str): numero do beneficio extraido
+        """
+        self.browser = abre_selenium(
             path_selenium="./chromedriver"
             if "linux" in sys.platform
             else "./chromedriver.exe",

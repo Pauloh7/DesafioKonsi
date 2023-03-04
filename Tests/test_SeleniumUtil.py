@@ -1,15 +1,18 @@
 import sys
 import seleniumwire.webdriver
 from seleniumwire import webdriver
-from Crawler.SeleniumUtil import open_selenium
+from Crawler.SeleniumUtil import abre_selenium
 
 class TestSeleniumUtil:
-    def test_open_selenium(self):
-        browser_teste = open_selenium(path_selenium="./chromedriver"
+    def test_abre_selenium(self):
+        """
+        Testa modulo que abre uma instancia de selenium
+        """
+        browser_teste = abre_selenium(path_selenium="./chromedriver"
             if "linux" in sys.platform
             else "./chromedriver.exe",
-            headless=True,
-        )
+                                      headless=True,
+                                      )
 
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument("enable-automation")

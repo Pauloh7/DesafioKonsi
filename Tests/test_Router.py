@@ -3,6 +3,9 @@ from Api.Router import app
 class TestRouter:
 
     def test_consulta_cpf(self):
+        """
+        Testa o fluxo de execução da api e da extração de beneficio
+        """
         cliente = TestClient(app)
         numero_beneficio = cliente.post(
             "/consultacpf/",

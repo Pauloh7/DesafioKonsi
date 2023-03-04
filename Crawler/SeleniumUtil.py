@@ -5,10 +5,18 @@ from selenium.webdriver.common.by import By
 import logging
 
 logger = logging.getLogger()
-def open_selenium(
+def abre_selenium(
     path_selenium,
     headless=False,
 ):
+    """
+    Executa o selenium e abre uma instancia de navegador
+    param:
+        path_selenium(str): caminho do chromedriver
+        headless(bolean): determina se o selenium abre ou nao uma janela quando executado
+    return:
+        browser(seleniumwire.webdriver.Chrome): objeto seleniumwire (janela do navegador)
+    """
     browser = None
 
     try:
@@ -37,11 +45,24 @@ def open_selenium(
     return browser
 
 
-def find_element_by_xpath_with_click(browser, element_xpath):
+def encontra_elemento_por_xpath_com_click(browser, element_xpath):
+    """
+    Simula clique do mouse em elemento da pagina com selenium
+    param:
+        browser(seleniumwire.webdriver.Chrome): objeto seleniumwire (janela do navegador)
+        element_xpath: xpath do elemento que se deseja o clique
+    """
     browser.find_element(By.XPATH, element_xpath).click()
     time.sleep(1)
 
 
-def send_keys_by_name(browser, element_xpath, value):
-    browser.find_element(By.NAME, element_xpath).send_keys(value)
+def envia_chaves_por_nome(browser, element_name, value):
+    """
+    encontra
+    param:
+        browser:
+        element_name:
+        value:
+    """
+    browser.find_element(By.NAME, element_name).send_keys(value)
     time.sleep(1)
