@@ -4,7 +4,7 @@ from seleniumwire import webdriver
 from selenium.webdriver.common.by import By
 import logging
 
-
+logger = logging.getLogger()
 def open_selenium(
     path_selenium,
     headless=False,
@@ -31,9 +31,8 @@ def open_selenium(
 
 
     except Exception as e:
-        logger = logging.getLogger()
         logger.exception(e)
-        pass
+        raise
 
     return browser
 

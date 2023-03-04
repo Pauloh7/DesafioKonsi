@@ -1,6 +1,7 @@
 from fastapi import FastAPI,HTTPException
-from api import Schema
+from Api import Schema
 from Crawler.RoboExtrator import RoboExtrator
+
 
 app = FastAPI()
 @app.post("/consultacpf/")

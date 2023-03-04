@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
-from api.Router import app
-class TestRoboExtrator:
+from Api.Router import app
+class TestRouter:
 
     def test_consulta_cpf(self):
         cliente = TestClient(app)
