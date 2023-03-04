@@ -1,5 +1,5 @@
 from fastapi.testclient import TestClient
-from Api.Router import app
+from api.router import app
 class TestRouter:
 
     def test_consulta_cpf(self):

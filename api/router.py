@@ -1,15 +1,15 @@
 from fastapi import FastAPI,HTTPException
-from Api import Schema
-from Crawler.RoboExtrator import RoboExtrator
+from api import schema
+from crawler.robo_extrator import RoboExtrator
 
 
 app = FastAPI()
 @app.post("/consultacpf/")
-async def consulta_cpf(cliente: Schema.ClienteInput):
-    """Parte da Api que recebe o post com dados do cliente e executa chamada para extracao dos beneficios
+async def consulta_cpf(cliente: schema.ClienteInput):
+    """Parte da api que recebe o post com dados do cliente e executa chamada para extracao dos beneficios
 
     Args:
-        cliente (Schema.ClienteInput): json com dados do cliente
+        cliente (schema.ClienteInput): json com dados do cliente
 
     Returns:
         resultado_dict (dict): dicionario com numero do beneficio

@@ -2,7 +2,7 @@ import time
 import re
 import requests
 import sys
-from Crawler.SeleniumUtil import (
+from crawler.selenium_util import (
     abre_selenium,
     encontra_elemento_por_xpath_com_click,
     envia_chaves_por_nome,

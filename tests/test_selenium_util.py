@@ -1,7 +1,7 @@
 import sys
 import seleniumwire.webdriver
 from seleniumwire import webdriver
-from Crawler.SeleniumUtil import abre_selenium
+from crawler.selenium_util import abre_selenium
 
 class TestSeleniumUtil:
     def test_abre_selenium(self):
