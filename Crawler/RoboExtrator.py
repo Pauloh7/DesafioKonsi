@@ -52,11 +52,11 @@ class RoboExtrator:
     def extrai_beneficio(self, cpf, login, senha):
         """
         Executa extração do numero de beneficio
-        :param
+        param:
             cpf(str): cpf a ter beneficio extraido
             login(str): nome de login do requisitante
             senha(str): senha do requisitante
-        :return
+        return:
             numero_beneficio(str): numero do beneficio extraido
         """
         self.browser = abre_selenium(
