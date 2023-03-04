@@ -2,7 +2,6 @@ from fastapi import FastAPI,HTTPException
 from api import schema
 from crawler.robo_extrator import RoboExtrator
 
-
 app = FastAPI()
 @app.post("/consultacpf/")
 async def consulta_cpf(cliente: schema.ClienteInput):
