@@ -4,7 +4,7 @@ from crawler.robo_extrator import RoboExtrator
 
 app = FastAPI()
 @app.post("/consultacpf/")
-async def consulta_cpf(cliente: schema.ClienteInput):
+async def consulta_cpf(cliente: schema.ClienteInput) -> dict:
     """Parte da api que recebe o post com dados do cliente e executa chamada para extracao dos beneficios
 
     Args:
@@ -16,9 +16,11 @@ async def consulta_cpf(cliente: schema.ClienteInput):
 
     try:
         robo = RoboExtrator()
-        numero_beneficio = robo.extrai_beneficio(cliente.cpf, cliente.login, cliente.senha)
-        resultado_dict = {"numero_do_beneficio": numero_beneficio}
-        return resultado_dict
+        if numero_beneficio := robo.extrai_beneficio(cliente.cpf, cliente.login, cliente.senha):
+            return {"numero_do_beneficio": numero_beneficio}
+
+        return 'Não foram encontrados benefícios para o CPF informado.'
+
     except Exception as e:
         raise HTTPException(
             status_code=500,

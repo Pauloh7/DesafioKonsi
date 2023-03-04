@@ -35,7 +35,7 @@ class RoboExtrator:
             logger.exception(e)
             raise
 
-    def insere_login_senha(self, login, senha):
+    def insere_login_senha(self, login: str, senha: str):
         """Busca inputs de usuario e senha, os preenche e clica no botão para requisitar acesso
 
         Args:
@@ -49,7 +49,7 @@ class RoboExtrator:
         encontra_elemento_por_xpath_com_click(self.browser, '//*[@id="botao"]')
 
     @retry(wait=wait_fixed(1), stop=stop_after_attempt(5))
-    def extrai_beneficio(self, cpf, login, senha):
+    def extrai_beneficio(self, cpf: str, login: str, senha: str) ->str:
         """Executa extração do numero de beneficio
 
         Args:
@@ -61,6 +61,7 @@ class RoboExtrator:
             numero_beneficio (str): numero do beneficio extraido
         """
 
+        numero_beneficio = None
         self.browser = abre_selenium(
             path_selenium="./chromedriver"
             if "linux" in sys.platform
@@ -87,6 +88,8 @@ class RoboExtrator:
                 .group(2)
                 .replace('"', "")
             )
+        except AttributeError as e:
+            return numero_beneficio
         except Exception as e:
             logger.exception(e)
             raise
