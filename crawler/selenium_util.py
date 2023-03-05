@@ -1,7 +1,8 @@
 import time
+import logging
 from seleniumwire import webdriver
 from selenium.webdriver.common.by import By
-import logging
+
 
 logger = logging.getLogger()
 

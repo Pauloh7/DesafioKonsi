@@ -2,13 +2,18 @@ import time
 import re
 import requests
 import sys
+import logging
 from crawler.selenium_util import (
     abre_selenium,
     encontra_elemento_por_xpath_com_click,
     envia_chaves_por_nome,
 )
-from tenacity import retry, wait_fixed, stop_after_attempt
-import logging
+from tenacity import (
+    retry,
+    wait_fixed,
+    stop_after_attempt,
+)
+
 
 logger = logging.getLogger()
 
