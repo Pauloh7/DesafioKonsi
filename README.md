@@ -1,62 +1,65 @@
-# Project Title
+# DesafioKonsi
 
-Simple overview of use/purpose.
+Projeto desenvolvido a partir de desafio feito pela empresa Konsi.
 
-## Description
+## Descrição
 
-An in-depth paragraph about your project and overview of use.
+Este projeto tem como objetivo montar um serviço de API que recebe uma requisição de um cliente, contendo um Json, informando seu CPF e credenciais de acesso ao site (http://extratoclube.com.br/). Posteriormente o sistema deve acessar o site e por meio de um Crawler navegar até a aba de consulta de benefícios, extrair o beneficio retornado pelo site e por fim enviar de volta ao cliente o benefício resultante da busca 
 
-## Getting Started
+## Iniciando
 
-### Dependencies
+### Dependencias
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+*Python 3.9
+*PIP
+*Pytest: Já está contindo no requirements.txt (https://docs.pytest.org/en/7.2.x/getting-started.html)
+*Uvicorn: Já está contindo no requirements.txt (https://www.uvicorn.org/)
+*Google Chrome: Versão 110.0.5481.178 (Versão oficial) 64 bits (https://support.google.com/chrome/answer/95346?hl=pt-BR&co=GENIE.Platform%3DDesktop)
+*Chromedriver : Uma versão compatível com o Chrome da versão acima já se encontra na raiz do projeto, caso possua outra versão do Google Chrome o Chromedriver compativel deve ser baixado e usado para subistituir o contido no projeto. (https://chromedriver.chromium.org/downloads)
+*Postman: Para requisição post com Json de teste(Qualquer ferramenta que execute requisições post pode ser usado). https://www.postman.com/downloads/
 
-### Installing
+### Instalação
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+* Clonar projeto do git.
+* Subir ambiente virtual.
+* Instalar requeriments.txt
 
-### Executing program
+### Executando Projeto
 
-* How to run the program
-* Step-by-step bullets
+* Abrir Terminal ou PowerShell.
+* Navegar até pasta raiz do projeto.
+* Executar uvicorn para subir API (rodar este comando obrigatoriamente na pasta raiz do projeto):
 ```
-code blocks for commands
+uvicorn api.router:app --reload
 ```
-
-## Help
-
-Any advise for common problems or issues.
+* Uma mensagem "Application startup complete." deve ser exebida no terminal.
+* Abrir o Postman.
+* Preencher a barra da URL de requisição com o endereço: 127.0.0.1:8000/consultacpf/
+* Alterar a opção de envio setada em get para post.
+* Selecionar a opção Body.
+* Selecionar raw e alterar de text para json, mudando assim o Content-Type.
+* Preencher a caixa de texto com seguinte para gerar o json:
 ```
-command to run if program contains helper info
+{"cpf":"074.687.335-20",
+"login":"testekonsi",
+"senha":"testekonsi"
+}
 ```
+* Clicar em send
+* Na caixa body inferior deve ser exibido o resultado da requisição feita.
 
-## Authors
+### Executando Testes
 
-Contributors names and contact info
+*Abrir terminal
+*Navegar até raiz do projeto
+*Executar comando (Executar via python para evitar erro de importação de modulos):
+```
+python -m pytest tests/
+```
+##Help
 
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+A requisição post deve ser feita por HTTP, provavelmente HTTPS ocorrerá em erro.
 
-## Version History
+## Autor
 
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
-    * Initial Release
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
-
-## Acknowledgments
-
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+[Paulo Henrique De Souza Gomes](https://www.linkedin.com/in/paulo-henrique-4a849139/)
