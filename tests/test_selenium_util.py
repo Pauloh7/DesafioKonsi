@@ -3,16 +3,17 @@ import seleniumwire.webdriver
 from seleniumwire import webdriver
 from crawler.selenium_util import abre_selenium
 
+
 class TestSeleniumUtil:
     def test_abre_selenium(self):
-        """Testa modulo que abre uma instancia de selenium
-        """
+        """Testa modulo que abre uma instancia de selenium"""
 
-        browser_teste = abre_selenium(path_selenium="./chromedriver"
+        browser_teste = abre_selenium(
+            path_selenium="./chromedriver"
             if "linux" in sys.platform
             else "./chromedriver.exe",
-                                      headless=True,
-                                      )
+            headless=True,
+        )
 
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument("enable-automation")
@@ -24,4 +25,6 @@ class TestSeleniumUtil:
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--incognito")
 
-        assert type(browser_teste) is type(seleniumwire.webdriver.Chrome(chrome_options=chrome_options))
+        assert type(browser_teste) is type(
+            seleniumwire.webdriver.Chrome(chrome_options=chrome_options)
+        )

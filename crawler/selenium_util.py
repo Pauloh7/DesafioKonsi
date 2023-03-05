@@ -5,9 +5,10 @@ import logging
 
 logger = logging.getLogger()
 
+
 def abre_selenium(
     path_selenium: str,
-    headless: bool =False ,
+    headless: bool = False,
 ) -> webdriver.Chrome:
     """Executa o selenium e abre uma instancia de navegador
 
@@ -37,8 +38,7 @@ def abre_selenium(
         browser = webdriver.Chrome(
             chrome_options=chrome_options, executable_path=path_selenium
         )
-        time.sleep (1)
-
+        time.sleep(1)
 
     except Exception as e:
         logger.exception(e)
@@ -47,7 +47,9 @@ def abre_selenium(
     return browser
 
 
-def encontra_elemento_por_xpath_com_click(browser: webdriver.Chrome, element_xpath: str):
+def encontra_elemento_por_xpath_com_click(
+    browser: webdriver.Chrome, element_xpath: str
+):
     """Simula clique do mouse em elemento da pagina com selenium
 
     Args:

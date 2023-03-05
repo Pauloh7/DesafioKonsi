@@ -12,6 +12,7 @@ import logging
 
 logger = logging.getLogger()
 
+
 class RoboExtrator:
     def __init__(self):
         self.browser = None
@@ -23,10 +24,8 @@ class RoboExtrator:
         )
         self.headers = None
 
-
     def faz_requisicao(self):
-        """Executa primeira requisicao ao site utilizando webdriver selenium
-        """
+        """Executa primeira requisicao ao site utilizando webdriver selenium"""
 
         time.sleep(1)
         try:
