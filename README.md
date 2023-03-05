@@ -78,9 +78,9 @@ uvicorn api.router:app --reload
 * Preencher a caixa de texto com seguinte para gerar o json:
 ```
 {
-"cpf":"074.687.335-20",
-"login":"testekonsi",
-"senha":"testekonsi"
+"cpf":"cpf_buscado",
+"login":"usuario_de_acesso",
+"senha":"senha_de_acesso"
 }
 ```
 * Clicar em send
