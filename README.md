@@ -4,7 +4,7 @@ Projeto desenvolvido a partir de desafio feito pela empresa Konsi.
 
 ## Descrição
 
-Este projeto tem como objetivo montar um serviço de API que recebe uma requisição de um cliente, contendo um Json, informando seu CPF e credenciais de acesso ao site (http://extratoclube.com.br/). Posteriormente o sistema deve acessar o site e por meio de um Crawler navegar até a aba de consulta de benefícios, extrair o beneficio retornado pelo site e por fim enviar de volta ao cliente o benefício resultante da busca 
+Este projeto tem como objetivo montar um serviço de API que recebe uma requisição de um cliente, contendo um Json, informando seu CPF e credenciais de acesso ao site (http://extratoclube.com.br/). Posteriormente o sistema deve acessar o site e por meio de um Crawler, navegar até a aba de consulta de benefícios, extrair o beneficio retornado pelo site e por fim enviar de volta ao requisitante o benefício resultante da busca 
 
 ## Iniciando
 
