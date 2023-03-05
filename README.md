@@ -10,13 +10,13 @@ Este projeto tem como objetivo montar um serviço de API que recebe uma requisi�
 
 ### Dependencias
 
-*Python 3.9
-*PIP
-*Pytest: Já está contindo no requirements.txt (https://docs.pytest.org/en/7.2.x/getting-started.html)
-*Uvicorn: Já está contindo no requirements.txt (https://www.uvicorn.org/)
-*Google Chrome: Versão 110.0.5481.178 (Versão oficial) 64 bits (https://support.google.com/chrome/answer/95346?hl=pt-BR&co=GENIE.Platform%3DDesktop)
-*Chromedriver : Uma versão compatível com o Chrome da versão acima já se encontra na raiz do projeto, caso possua outra versão do Google Chrome o Chromedriver compativel deve ser baixado e usado para subistituir o contido no projeto. (https://chromedriver.chromium.org/downloads)
-*Postman: Para requisição post com Json de teste(Qualquer ferramenta que execute requisições post pode ser usado). https://www.postman.com/downloads/
+* Python 3.9
+* PIP
+* Pytest: Já está contindo no requirements.txt (https://docs.pytest.org/en/7.2.x/getting-started.html)
+* Uvicorn: Já está contindo no requirements.txt (https://www.uvicorn.org/)
+* Google Chrome: Versão 110.0.5481.178 (Versão oficial) 64 bits (https://support.google.com/chrome/answer/95346?hl=pt-BR&co=GENIE.Platform%3DDesktop)
+* Chromedriver : Uma versão compatível com o Chrome da versão acima já se encontra na raiz do projeto, caso possua outra versão do Google Chrome o Chromedriver compativel deve ser baixado e usado para subistituir o contido no projeto. (https://chromedriver.chromium.org/downloads)
+* Postman: Para requisição post com Json de teste(Qualquer ferramenta que execute requisições post pode ser usado). https://www.postman.com/downloads/
 
 ### Instalação
 
