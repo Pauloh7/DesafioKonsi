@@ -54,11 +54,11 @@ pip install -r requirements.txt
 
 * Abrir Terminal ou PowerShell.
 * Ativar o ambiente virtual.
-* Linux
+#### Linux
 ```
 source nome_da_virtualenv/bin/activate
 ```
-* Windows
+#### Windows
 ```
 nome_da_virtualenv/Scripts/Activate
 ```
