@@ -7,13 +7,13 @@ app = FastAPI()
 
 @app.post("/consultacpf/")
 async def consulta_cpf(cliente: schema.ClienteInput) -> dict:
-    """Parte da api que recebe o post com dados do cliente e executa chamada para extracao dos beneficios
+    """Parte da api que recebe o post com dados do cliente e executa chamada para extração dos benefícios
 
     Args:
         cliente (schema.ClienteInput): Json com dados do cliente
 
     Returns:
-        resultado_dict (dict): Dicionario com numero do beneficio
+        resultado_dict (dict): Dicionário com número do benefício
 
     Raises:
         HTTPException: Erro de processamento na requisição

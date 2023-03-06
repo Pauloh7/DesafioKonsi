@@ -11,11 +11,11 @@ def abre_selenium(
     path_selenium: str,
     headless: bool = False,
 ) -> webdriver.Chrome:
-    """Executa o selenium e abre uma instancia de navegador
+    """Executa o Selenium e abre uma instancia de navegador
 
     Args:
         path_selenium (str): Caminho do chromedriver
-        headless (bolean): Determina se o selenium abre ou nao uma janela quando executado
+        headless (bolean): Determina se o Selenium abre ou não uma janela quando executado
 
     returns:
         browser (webdriver.Chrome): Objeto webdriver  (janela do navegador)
@@ -51,7 +51,7 @@ def abre_selenium(
 def encontra_elemento_por_xpath_com_click(
     browser: webdriver.Chrome, element_xpath: str
 ):
-    """Simula clique do mouse em elemento da pagina com selenium
+    """Simula clique do mouse em elemento da página com selenium
 
     Args:
         browser (webdriver.Chrome): Objeto webdriver (janela do navegador)

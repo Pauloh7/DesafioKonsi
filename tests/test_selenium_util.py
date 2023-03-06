@@ -6,7 +6,7 @@ from crawler.selenium_util import abre_selenium
 
 class TestSeleniumUtil:
     def test_abre_selenium(self):
-        """Testa modulo que abre uma instancia de selenium"""
+        """Testa modulo que abre uma instancia de Selenium"""
 
         browser_teste = abre_selenium(
             path_selenium="./chromedriver"

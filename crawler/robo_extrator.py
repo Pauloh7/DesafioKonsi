@@ -40,7 +40,7 @@ class RoboExtrator:
             raise
 
     def insere_login_senha(self, login: str, senha: str):
-        """Busca inputs de usuario e senha, os preenche e clica no botão para requisitar acesso
+        """Busca inputs de usuário e senha, os preenche e clica no botão para requisitar acesso
 
         Args:
             login (str): Usuário do requisitante
@@ -54,18 +54,18 @@ class RoboExtrator:
 
     @retry(wait=wait_fixed(1), stop=stop_after_attempt(5))
     def extrai_beneficio(self, cpf: str, login: str, senha: str) -> str:
-        """Executa extração do numero de beneficio
+        """Executa extração do número de benefício
 
         Args:
-            cpf (str): Cpf a ter beneficio extraido
+            cpf (str): Cpf a ter benefício extraído
             login (str): Usuário do requisitante
             senha (str): Senha do requisitante
 
         Returns:
-            numero_beneficio (str): Número do beneficio extraido
+            numero_beneficio (str): Número do benefício extraído
 
         Raises:
-        AttributeError: Erro causado por não haver benefício a ser extraido
+        AttributeError: Erro causado por não haver benefício a ser extraído
         """
 
         numero_beneficio = None
