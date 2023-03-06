@@ -116,22 +116,16 @@ Valor da variável : senha_de_acesso_do_tester
 export USERKONSI=usuario_de_acesso_do_tester
 export SENHAKONSI=senha_de_acesso_do_tester
 ```
-* Abrir terminal ou Powershell
-* Navegar até o diretório contendo o requirements-dev.txt
-* Com o ambiente virtual ativo executar o comando abaixo:
-```
-pip install -r requirements-dev.txt
-``` 
+### Linux ou Windows
 * Navegar até raiz do projeto
 * Executar comando (Executar via Python para evitar erro de importação de módulos):
 ```
 python -m pytest tests/
 ```
 
-
 ## Help
 
-* A requisição post deve ser feita por HTTP, provavelmente HTTPS ocorrerá em erro.
+* A requisição POST deverá ser feita estritamente pelo método HTTP.
 
 ## Autor
 
