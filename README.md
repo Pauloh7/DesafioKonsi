@@ -43,7 +43,7 @@ source nome_da_virtualenv/bin/activate
 nome_da_virtualenv/Scripts/Activate
 ```
 
-#### Instalar requeriments.txt
+#### Instalar requeriments.txt ou requirements-dev.txt
 * Navegar até o diretório contendo o requirements.txt ou requirements-dev.txt caso desejar instalar o pytest para rodar os testes posteriormente
 * Com o ambiente virtual ativo executar o comando abaixo para requirements.txt:
 ```
@@ -90,7 +90,18 @@ uvicorn api.router:app --reload
 
 ### Executando Testes
 
-####
+#### Windows
+* Na aba de busca digitar: Editar as variáveis de ambiente do sistema
+* Selecionar variáveis de ambiente
+* Clicar em novo
+* Preencher assim:
+```
+Nome da variável : USERKONSI
+Valor da variável : usuario_de_acesso_do_tester
+```
+* Clicar em ok
+* Clicar em novo
+*
 
 * Abrir terminal
 * Navegar até o diretório contendo o requirements-dev.txt
