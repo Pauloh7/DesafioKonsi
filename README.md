@@ -34,11 +34,11 @@ git clone git@github.com:Pauloh7/DesafioKonsi.git
 virtualenv nome_da_virtualenv
 ```
 * Utilizar primeiro comando em ambientes Linux ou segundo comando em ambientes Windows para ativar o ambiente virtual.
-* Linux
+##### Linux
 ```
 source nome_da_virtualenv/bin/activate
 ```
-* Windows
+##### Windows
 ```
 nome_da_virtualenv/Scripts/Activate
 ```
