@@ -73,7 +73,7 @@ uvicorn api.router:app --reload
 * Alterar a opção de envio setada em get para post.
 * Selecionar a opção Body.
 * Selecionar raw e alterar de text para json, mudando assim o Content-Type.
-* Preencher a caixa de texto com seguinte para gerar o json:
+* Preencher a caixa de texto com seguinte json:
 ```
 {
   "cpf":"cpf_buscado",
