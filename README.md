@@ -108,6 +108,11 @@ Nome da variável : SENHAKONSI
 Valor da variável : senha_de_acesso_do_tester
 ```
 * Reiniciar o dispositvo
+* Navegar até raiz do projeto
+* Executar comando (Executar via Python para evitar erro de importação de módulos):
+```
+python -m pytest tests/ -vv
+```
 
 ### Linux
 * Abrir terminal 
@@ -116,7 +121,6 @@ Valor da variável : senha_de_acesso_do_tester
 export USERKONSI=usuario_de_acesso_do_tester
 export SENHAKONSI=senha_de_acesso_do_tester
 ```
-### Linux ou Windows
 * Navegar até raiz do projeto
 * Executar comando (Executar via Python para evitar erro de importação de módulos):
 ```
