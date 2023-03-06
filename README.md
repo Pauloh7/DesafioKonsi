@@ -54,14 +54,14 @@ pip install -r requirements.txt
 
 * Abrir Terminal ou PowerShell.
 * Ativar o ambiente virtual.
-#### Linux
-```
-source nome_da_virtualenv/bin/activate
-```
-#### Windows
-```
-nome_da_virtualenv/Scripts/Activate
-```
+  * Linux
+  ```
+  source nome_da_virtualenv/bin/activate
+  ```
+  * Windows
+  ```
+  nome_da_virtualenv/Scripts/Activate
+  ```
 * Navegar até pasta raiz do projeto.
 * Executar uvicorn para subir API (rodar este comando obrigatoriamente na pasta raiz do projeto):
 ```
