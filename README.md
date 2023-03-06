@@ -43,15 +43,11 @@ source nome_da_virtualenv/bin/activate
 nome_da_virtualenv/Scripts/Activate
 ```
 
-#### Instalar requeriments.txt ou requirements-dev.txt
-* Navegar até o diretório contendo o requirements.txt ou requirements-dev.txt caso desejar instalar o pytest para rodar os testes posteriormente
-* Com o ambiente virtual ativo executar o comando abaixo para requirements.txt:
+#### Instalar requeriments.txt
+* Navegar até o diretório contendo o requirements.txt
+* Com o ambiente virtual ativo executar o comando abaixo:
 ```
 pip install -r requirements.txt
-```
-* Com o ambiente virtual ativo executar o comando abaixo para requirements-dev.txt:
-```
-pip install -r requirements-dev.txt
 ```
 
 ### Executando Projeto
@@ -88,7 +84,12 @@ uvicorn api.router:app --reload
 * Clicar em send
 * Na caixa body inferior deve ser exibido o resultado da requisição feita.
 
-### Executando Testes
+### Executando os Testes
+* Navegar até o diretório contendo o requirements-dev.txt
+* Com o ambiente virtual ativo executar o comando abaixo:
+```
+pip install -r requirements-dev.txt
+```
 
 #### Windows
 * Na aba de busca digitar: Editar as variáveis de ambiente do sistema
@@ -101,10 +102,26 @@ Valor da variável : usuario_de_acesso_do_tester
 ```
 * Clicar em ok
 * Clicar em novo
-*
+* Preencher assim:
+```
+Nome da variável : SENHAKONSI
+Valor da variável : senha_de_acesso_do_tester
+```
+* Reiniciar o dispositvo
 
-* Abrir terminal
+### Linux
+* Abrir terminal 
+* Executar seguintes comandos
+```
+export USERKONSI=usuario_de_acesso_do_tester
+export SENHAKONSI=senha_de_acesso_do_tester
+```
+* Abrir terminal ou Powershell
 * Navegar até o diretório contendo o requirements-dev.txt
+* Com o ambiente virtual ativo executar o comando abaixo:
+```
+pip install -r requirements-dev.txt
+``` 
 * Navegar até raiz do projeto
 * Executar comando (Executar via Python para evitar erro de importação de módulos):
 ```
