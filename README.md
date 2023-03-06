@@ -120,7 +120,7 @@ export SENHAKONSI=senha_de_acesso_do_tester
 * Navegar até raiz do projeto
 * Executar comando (Executar via Python para evitar erro de importação de módulos):
 ```
-python -m pytest tests/
+python -m pytest tests/ -vv
 ```
 
 ## Help
