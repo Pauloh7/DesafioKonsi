@@ -69,8 +69,8 @@ uvicorn api.router:app --reload
 ```
 * Uma mensagem "Application startup complete." deve ser exibida no terminal.
 * Abrir o Postman.
-* Preencher a barra da URL de requisição com o endereço: 127.0.0.1:8000/consultacpf/
-* Alterar a opção de envio setada em get para post.
+* Preencher a barra da URL de requisição com o endereço: 127.0.0.1:8000/consultacpf/ 
+* Alterar a opção de envio setada em get para post. (A requisição POST deverá ser feita estritamente pelo método HTTP.)
 * Selecionar a opção Body.
 * Selecionar raw e alterar de text para json, mudando assim o Content-Type.
 * Preencher a caixa de texto com o seguinte json:
@@ -126,10 +126,6 @@ export SENHAKONSI=senha_de_acesso_do_tester
 ```
 python -m pytest tests/ -vv
 ```
-
-## Help
-
-* A requisição POST deverá ser feita estritamente pelo método HTTP.
 
 ## Autor
 
