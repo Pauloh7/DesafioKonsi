@@ -35,13 +35,13 @@ virtualenv nome_da_virtualenv
 ```
 * Utilizar primeiro comando em ambientes Linux ou segundo comando em ambientes Windows para ativar o ambiente virtual.
   * Linux
- ```
- source nome_da_virtualenv/bin/activate
- ```
+  ```
+  source nome_da_virtualenv/bin/activate
+  ```
   * Windows
- ```
- nome_da_virtualenv/Scripts/Activate
- ```
+  ```
+  nome_da_virtualenv/Scripts/Activate
+  ```
 
 #### Instalar requeriments.txt
 * Navegar até o diretório contendo o requirements.txt
