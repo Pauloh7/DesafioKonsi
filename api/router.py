@@ -26,7 +26,7 @@ async def search_cpf(cliente: schema.ClienteInput) -> dict:
         ):
             return {"numero_do_beneficio": numero_beneficio}
 
-        return "Não foram encontrados benefícios para o CPF informado."
+        return {"detalhes": "Não foram encontrados benefícios para o CPF informado."}
 
     except Exception as e:
         raise HTTPException(status_code=500, detail="Erro ao processar a requisição.")
