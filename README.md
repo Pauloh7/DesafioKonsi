@@ -114,7 +114,7 @@ Valor da variável : senha_de_acesso_do_tester
 python -m pytest tests/ -vv
 ```
 
-### Linux
+#### Linux
 * Abrir terminal 
 * Executar seguintes comandos
 ```
