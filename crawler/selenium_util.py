@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 logger = logging.getLogger()
 
 
-def abre_selenium(
+def open_selenium(
     path_selenium: str,
     headless: bool = False,
 ) -> webdriver.Chrome:
@@ -48,7 +48,7 @@ def abre_selenium(
     return browser
 
 
-def encontra_elemento_por_xpath_com_click(
+def find_element_by_xpath_with_click(
     browser: webdriver.Chrome, element_xpath: str
 ):
     """Simula clique do mouse em elemento da página com selenium
@@ -62,7 +62,7 @@ def encontra_elemento_por_xpath_com_click(
     time.sleep(1)
 
 
-def envia_chaves_por_nome(browser: webdriver.Chrome, element_name: str, value: str):
+def send_keys_by_name(browser: webdriver.Chrome, element_name: str, value: str):
     """Encontra elemento, envia e preenche com valor
 
     Args:

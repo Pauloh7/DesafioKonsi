@@ -1,14 +1,14 @@
 import sys
 import seleniumwire.webdriver
 from seleniumwire import webdriver
-from crawler.selenium_util import abre_selenium
+from crawler.selenium_util import open_selenium
 
 
 class TestSeleniumUtil:
-    def test_abre_selenium(self):
+    def test_open_selenium(self):
         """Testa modulo que abre uma instancia de Selenium"""
 
-        browser_teste = abre_selenium(
+        browser_teste = open_selenium(
             path_selenium="./chromedriver"
             if "linux" in sys.platform
             else "./chromedriver.exe",

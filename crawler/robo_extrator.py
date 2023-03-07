@@ -4,9 +4,9 @@ import requests
 import sys
 import logging
 from crawler.selenium_util import (
-    abre_selenium,
-    encontra_elemento_por_xpath_com_click,
-    envia_chaves_por_nome,
+    open_selenium,
+    find_element_by_xpath_with_click,
+    send_keys_by_name,
 )
 from tenacity import (
     retry,
@@ -29,7 +29,7 @@ class RoboExtrator:
         )
         self.headers = None
 
-    def faz_requisicao(self):
+    def get_login_page(self):
         """Executa primeira requisicao ao site utilizando webdriver selenium"""
 
         time.sleep(1)
@@ -39,7 +39,7 @@ class RoboExtrator:
             logger.exception(e)
             raise
 
-    def insere_login_senha(self, login: str, senha: str):
+    def set_login_senha(self, login: str, senha: str):
         """Busca inputs de usuário e senha, os preenche e clica no botão para requisitar acesso
 
         Args:
@@ -48,12 +48,12 @@ class RoboExtrator:
         """
 
         time.sleep(1)
-        envia_chaves_por_nome(self.browser, "usuario", login)
-        envia_chaves_por_nome(self.browser, "senha", senha)
-        encontra_elemento_por_xpath_com_click(self.browser, '//*[@id="botao"]')
+        send_keys_by_name(self.browser, "usuario", login)
+        send_keys_by_name(self.browser, "senha", senha)
+        find_element_by_xpath_with_click(self.browser, '//*[@id="botao"]')
 
     @retry(wait=wait_fixed(1), stop=stop_after_attempt(5))
-    def extrai_beneficio(self, cpf: str, login: str, senha: str) -> str:
+    def get_beneficio(self, cpf: str, login: str, senha: str) -> str:
         """Executa extração do número de benefício
 
         Args:
@@ -69,15 +69,15 @@ class RoboExtrator:
         """
 
         numero_beneficio = None
-        self.browser = abre_selenium(
+        self.browser = open_selenium(
             path_selenium="./chromedriver"
             if "linux" in sys.platform
             else "./chromedriver.exe",
             headless=True,
         )
         try:
-            self.faz_requisicao()
-            self.insere_login_senha(login, senha)
+            self.get_login_page()
+            self.set_login_senha(login, senha)
 
             s = requests.session()
             time.sleep(1)
