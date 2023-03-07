@@ -5,7 +5,7 @@ from crawler.robo_extrator import RoboExtrator
 app = FastAPI()
 
 
-@app.post("/consultacpf/")
+@app.post("/search_cpf/")
 async def search_cpf(cliente: schema.ClienteInput) -> dict:
     """Parte da api que recebe o post com dados do cliente e executa chamada para extração dos benefícios
 
