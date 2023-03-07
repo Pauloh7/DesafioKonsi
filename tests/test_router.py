@@ -3,7 +3,7 @@ from api.router import app
 import os
 
 class TestRouter:
-    def test_check_cpf(self):
+    def test_search_cpf(self):
         """Testa o fluxo de execução da api e da extração de benefício"""
 
         cliente = TestClient(app)

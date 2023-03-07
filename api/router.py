@@ -6,7 +6,7 @@ app = FastAPI()
 
 
 @app.post("/consultacpf/")
-async def check_cpf(cliente: schema.ClienteInput) -> dict:
+async def search_cpf(cliente: schema.ClienteInput) -> dict:
     """Parte da api que recebe o post com dados do cliente e executa chamada para extração dos benefícios
 
     Args:
@@ -21,7 +21,7 @@ async def check_cpf(cliente: schema.ClienteInput) -> dict:
 
     try:
         robo = RoboExtrator()
-        if numero_beneficio := robo.get_beneficio(
+        if numero_beneficio := robo.extract_cpf_info(
             cliente.cpf, cliente.login, cliente.senha
         ):
             return {"numero_do_beneficio": numero_beneficio}

@@ -29,7 +29,7 @@ class RoboExtrator:
         )
         self.headers = None
 
-    def get_login_page(self):
+    def get_page_login(self):
         """Executa primeira requisicao ao site utilizando webdriver selenium"""
 
         time.sleep(1)
@@ -39,7 +39,7 @@ class RoboExtrator:
             logger.exception(e)
             raise
 
-    def set_login_senha(self, login: str, senha: str):
+    def set_credentials(self, login: str, senha: str):
         """Busca inputs de usuário e senha, os preenche e clica no botão para requisitar acesso
 
         Args:
@@ -53,7 +53,7 @@ class RoboExtrator:
         find_element_by_xpath_with_click(self.browser, '//*[@id="botao"]')
 
     @retry(wait=wait_fixed(1), stop=stop_after_attempt(5))
-    def get_beneficio(self, cpf: str, login: str, senha: str) -> str:
+    def extract_cpf_info(self, cpf: str, login: str, senha: str) -> str:
         """Executa extração do número de benefício
 
         Args:
@@ -76,8 +76,8 @@ class RoboExtrator:
             headless=True,
         )
         try:
-            self.get_login_page()
-            self.set_login_senha(login, senha)
+            self.get_page_login()
+            self.set_credentials(login, senha)
 
             s = requests.session()
             time.sleep(1)
