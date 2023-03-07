@@ -34,38 +34,34 @@ git clone git@github.com:Pauloh7/DesafioKonsi.git
 virtualenv nome_da_virtualenv
 ```
 * Utilizar primeiro comando em ambientes Linux ou segundo comando em ambientes Windows para ativar o ambiente virtual.
-* Linux
-```
-source nome_da_virtualenv/bin/activate
-```
-* Windows
-```
-nome_da_virtualenv/Scripts/Activate
-```
+  * Linux
+  ```
+  source nome_da_virtualenv/bin/activate
+  ```
+  * Windows
+  ```
+  nome_da_virtualenv/Scripts/Activate
+  ```
 
 #### Instalar requeriments.txt
-* Navegar até o diretório contendo o requirements.txt ou requirements-dev.txt caso desejar instalar o pytest para rodar os testes posteriormente
-* Com o ambiente virtual ativo executar o comando abaixo para requirements.txt:
+* Navegar até o diretório contendo o requirements.txt
+* Com o ambiente virtual ativo executar o comando abaixo:
 ```
 pip install -r requirements.txt
-```
-* Com o ambiente virtual ativo executar o comando abaixo para requirements-dev.txt:
-```
-pip install -r requirements-dev.txt
 ```
 
 ### Executando Projeto
 
 * Abrir Terminal ou PowerShell.
 * Ativar o ambiente virtual.
-* Linux
-```
-source nome_da_virtualenv/bin/activate
-```
-* Windows
-```
-nome_da_virtualenv/Scripts/Activate
-```
+  * Linux
+  ```
+  source nome_da_virtualenv/bin/activate
+  ```
+  * Windows
+  ```
+  nome_da_virtualenv/Scripts/Activate
+  ```
 * Navegar até pasta raiz do projeto.
 * Executar uvicorn para subir API (rodar este comando obrigatoriamente na pasta raiz do projeto):
 ```
@@ -73,11 +69,11 @@ uvicorn api.router:app --reload
 ```
 * Uma mensagem "Application startup complete." deve ser exibida no terminal.
 * Abrir o Postman.
-* Preencher a barra da URL de requisição com o endereço: 127.0.0.1:8000/consultacpf/
-* Alterar a opção de envio setada em get para post.
+* Preencher a barra da URL de requisição com o endereço: 127.0.0.1:8000/consultacpf/ 
+* Alterar a opção de envio setada em get para post. (A requisição POST deverá ser feita estritamente pelo método HTTP.)
 * Selecionar a opção Body.
 * Selecionar raw e alterar de text para json, mudando assim o Content-Type.
-* Preencher a caixa de texto com seguinte para gerar o json:
+* Preencher a caixa de texto com o seguinte json:
 ```
 {
   "cpf":"cpf_buscado",
@@ -88,22 +84,48 @@ uvicorn api.router:app --reload
 * Clicar em send
 * Na caixa body inferior deve ser exibido o resultado da requisição feita.
 
-### Executando Testes
-
-####
-
-* Abrir terminal
+### Executando os Testes
 * Navegar até o diretório contendo o requirements-dev.txt
+* Com o ambiente virtual ativo executar o comando abaixo:
+```
+pip install -r requirements-dev.txt
+```
+
+#### Windows
+* Na aba de busca digitar: Editar as variáveis de ambiente do sistema
+* Selecionar variáveis de ambiente
+* Clicar em novo
+* Preencher assim:
+```
+Nome da variável : USERKONSI
+Valor da variável : usuario_de_acesso_do_tester
+```
+* Clicar em ok
+* Clicar em novo
+* Preencher assim:
+```
+Nome da variável : SENHAKONSI
+Valor da variável : senha_de_acesso_do_tester
+```
+* Reiniciar o dispositvo
 * Navegar até raiz do projeto
 * Executar comando (Executar via Python para evitar erro de importação de módulos):
 ```
-python -m pytest tests/
+python -m pytest tests/ -vv
 ```
 
-
-## Help
-
-* A requisição post deve ser feita por HTTP, provavelmente HTTPS ocorrerá em erro.
+### Linux
+* Abrir terminal 
+* Executar seguintes comandos
+```
+export USERKONSI=usuario_de_acesso_do_tester
+export SENHAKONSI=senha_de_acesso_do_tester
+```
+* Navegar até raiz do projeto
+* Executar comando (Executar via Python para evitar erro de importação de módulos):
+```
+python -m pytest tests/ -vv
+```
 
 ## Autor
 
