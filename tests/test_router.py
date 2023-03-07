@@ -8,7 +8,7 @@ class TestRouter:
 
         cliente = TestClient(app)
         numero_beneficio = cliente.post(
-            "/consultacpf/",
+            "/search_cpf/",
             json={
                 "cpf": '216.123.905-87',
                 "login": os.environ.get('USERKONSI'),
