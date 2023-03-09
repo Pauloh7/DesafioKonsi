@@ -126,6 +126,18 @@ export SENHAKONSI=senha_de_acesso_do_tester
 ```
 python -m pytest tests/ -vv
 ```
+### Subir API via Docker
+* Abrir terminal
+* Navegar até pasta raiz do projeto
+* Executar comando abaixo:
+```
+docker build -t konsi .
+```
+* Executar este outro comando abaixo:
+```
+docker run -p 8000:8000 konsi
+```
+* Fazer a requisição post para o endereço 127.0.0.1:8000/search_cpf/
 
 ## Autor
 
