@@ -127,6 +127,7 @@ export SENHAKONSI=senha_de_acesso_do_tester
 python -m pytest tests/ -vv
 ```
 ### Subir API via Docker
+* Instalar o docker
 * Abrir terminal
 * Navegar até pasta raiz do projeto
 * Executar comando abaixo:
